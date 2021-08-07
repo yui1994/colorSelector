@@ -13,20 +13,47 @@
 
         .selector {
             box-shadow: 0 0 5px 3px #888;
-            width: 150px;
+            width: 250px;
             padding: 5px;
-            margin: auto;
+            margin: 30px auto;
         }
 
         #mycolor {
-            width: 100px;
-            height: 100px;
+            margin: 15px auto 0px;
+            width: 200px;
+            height: 200px;
             /* background-color: aquamarine; */
             /* margin: 5px; */
         }
 
         #changeColor {
             margin: 5px;
+            text-align: center;
+        }
+
+        button {
+            width: 47px;
+            border-radius: 5px;
+            border-color: blueviolet;
+            background: violet;
+            padding: 0px;
+            margin: 0px;
+            color: white;
+        }
+
+        #R {
+            border-color: brown;
+            background: red;
+        }
+
+        #G {
+            border-color: darkolivegreen;
+            background: green;
+        }
+
+        #B {
+            border-color: darkslateblue;
+            background: steelblue;
         }
     </style>
 </head>
@@ -34,7 +61,7 @@
 <body>
     <div class="selector">
         <div id="mycolor">
-
+            <!-- <h5 id="colorCode">#FF0000</h5> -->
         </div>
         <div id="changeColor">
             <button id="R" value="R" onclick="colorCh(this.value)">R</button>
@@ -42,60 +69,67 @@
             <button id="B" value="B" onclick="colorCh(this.value)">B</button>
             <button id="rand" onclick="colorRand()">?</button>
         </div>
-
     </div>
     <script>
         let mycolor = document.getElementById('mycolor');
+        var inputCl;
+        var colorCode;
         function rand(x) {
             return Math.floor(Math.random() * x);
         }
 
-        var cR = rand(256);
-        var cG = rand(256);
-        var cB = rand(256);
-
+        var cR = rand(256),
+            cG = rand(256),
+            cB = rand(256);
+        
         style = `background: rgb(${cR},${cG},${cB})`;
         mycolor.style = style;
-
+        //想插入HEX色碼到顏色框框中 (還要補零)
+        // var icR =(cR).toString(16)
+        // document.getElementById("colorCode").innerHTML =`rgb(${icR},${cG},${cB})`;
 
         function colorCh(who) {
-            var input = prompt('輸入0~255之間的數字');
+            inputCl = prompt('輸入0~255之間的數字');
 
-            if (input !="" && input >= 0 && input <= 255) {
+            // intCl=Number(inputCl);
+            // colorCode = (intCl).toString(16)
+
+            
+            if (inputCl != "" && inputCl >= 0 && inputCl <= 255) {
                 switch (who) {
                     // 紅色
                     case 'R':
-                        cR = input;
+                        cR = inputCl;
                         //alert(cR);
                         style = `background: rgb(${cR},${cG},${cB})`;
                         break;
 
                     //綠色
                     case 'G':
-                        cG = input;
+                        cG = inputCl;
                         // alert(cG);
                         style = `background: rgb(${cR},${cG},${cB})`;
                         break;
 
                     //藍色
                     case 'B':
-                        cB = input;
+                        cB = inputCl;
                         // alert(cB);
                         style = `background: rgb(${cR},${cG},${cB})`;
                         break;
                 }
-                mycolor.style = style;
-                
             } else {
                 alert('你輸入的不是0~255之間的數字，請重新輸入');
             }
+            
+            mycolor.style = style;
         }
 
         function colorRand() {
 
             function rand(x) {
-            return Math.floor(Math.random() * x);
-        }
+                return Math.floor(Math.random() * x);
+            }
 
             cR = rand(256);
             cG = rand(256);
