@@ -15,8 +15,7 @@
             box-shadow: 0 0 5px 3px #888;
             width: 150px;
             padding: 5px;
-            margin-left: 100px;
-            margin-top: 50px;
+            margin: auto;
         }
 
         #mycolor {
@@ -62,7 +61,7 @@
         function colorCh(who) {
             var input = prompt('輸入0~255之間的數字');
 
-            if (input >= 0 && input <= 255) {
+            if (input !="" && input >= 0 && input <= 255) {
                 switch (who) {
                     // 紅色
                     case 'R':
@@ -85,25 +84,27 @@
                         style = `background: rgb(${cR},${cG},${cB})`;
                         break;
                 }
+                mycolor.style = style;
+                
             } else {
                 alert('你輸入的不是0~255之間的數字，請重新輸入');
-                colorCh();
             }
-            mycolor.style = style;
         }
 
         function colorRand() {
-            function rand(x) {
-                return Math.floor(Math.random() * x);
-            }
 
-            var cR = rand(256);
-            var cG = rand(256);
-            var cB = rand(256);
+            function rand(x) {
+            return Math.floor(Math.random() * x);
+        }
+
+            cR = rand(256);
+            cG = rand(256);
+            cB = rand(256);
 
             style = `background: rgb(${cR},${cG},${cB})`;
             mycolor.style = style;
         }
+
             //mycolor.style=`background: rgb(${cR},${cg},${cB})`;
 
             // function colorR() {
