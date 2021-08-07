@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .selector {
+            box-shadow: 0 0 5px 3px #888;
+            width: 150px;
+            padding: 5px;
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+
+        #mycolor {
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+            /* margin: 5px; */
+        }
+
+        #changeColor {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="selector">
+        <div id="mycolor">
+
+        </div>
+        <div id="changeColor">
+            <button id="R" value="R" onclick="colorCh(this.value)">R</button>
+            <button id="G" value="G" onclick="colorCh(this.value)">G</button>
+            <button id="B" value="B" onclick="colorCh(this.value)">B</button>
+            <button id="rand" onclick="colorRand()">?</button>
+        </div>
+
+    </div>
+    <script>
+        let mycolor = document.getElementById('mycolor');
+        function rand(x) {
+            return Math.floor(Math.random() * x);
+        }
+
+        var cR = rand(256);
+        var cG = rand(256);
+        var cB = rand(256);
+
+        style = `background: rgb(${cR},${cG},${cB})`;
+        mycolor.style = style;
+
+
+        function colorCh(who) {
+            var input = prompt('輸入0~255之間的數字');
+
+            if (input >= 0 && input <= 255) {
+                switch (who) {
+                    // 紅色
+                    case 'R':
+                        cR = input;
+                        //alert(cR);
+                        style = `background: rgb(${cR},${cG},${cB})`;
+                        break;
+
+                    //綠色
+                    case 'G':
+                        cG = input;
+                        // alert(cG);
+                        style = `background: rgb(${cR},${cG},${cB})`;
+                        break;
+
+                    //藍色
+                    case 'B':
+                        cB = input;
+                        // alert(cB);
+                        style = `background: rgb(${cR},${cG},${cB})`;
+                        break;
+                }
+            } else {
+                alert('你輸入的不是0~255之間的數字，請重新輸入');
+                colorCh();
+            }
+            mycolor.style = style;
+        }
+
+        function colorRand() {
+            function rand(x) {
+                return Math.floor(Math.random() * x);
+            }
+
+            var cR = rand(256);
+            var cG = rand(256);
+            var cB = rand(256);
+
+            style = `background: rgb(${cR},${cG},${cB})`;
+            mycolor.style = style;
+        }
+            //mycolor.style=`background: rgb(${cR},${cg},${cB})`;
+
+            // function colorR() {
+            //    var cR = prompt('輸入0~255之間的數字');
+
+            //     if (cR >= 0 && cR <= 255) {
+            //         //alert('你輸入了' + cR);
+            //     } else {
+            //         alert('請輸入0~255之間的數字');
+            //         colorR();
+            //     }
+
+            //     //style="background: rgb(255, 136, 85)
+            //     mycolor.style=`background: rgb(${cR},136,85)`;
+            // }
+
+            // function colorG() {
+            //    var cG = prompt('輸入0~255之間的數字');
+
+            //     if (cG >= 0 && cG <= 255) {
+            //         //alert('你輸入了' + cR);
+            //     } else {
+            //         alert('請輸入0~255之間的數字');
+            //         colorG();
+            //     }
+
+            //     //style="background: rgb(255, 136, 85)
+            //     mycolor.style=`background: rgb(136,${cG},85)`;
+            // }
+
+            // function colorB() {
+            //    var cB = prompt('輸入0~255之間的數字');
+
+            //     if (cB >= 0 && cB <= 255) {
+            //         //alert('你輸入了' + cR);
+            //     } else {
+            //         alert('請輸入0~255之間的數字');
+            //         colorB();
+            //     }
+
+            //     //style="background: rgb(255, 136, 85)
+            //     mycolor.style=`background: rgb(85,136,${cB})`;
+            // }
+    </script>
+
+
+</body>
+
+</html>
